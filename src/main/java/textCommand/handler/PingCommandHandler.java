@@ -10,6 +10,6 @@ public class PingCommandHandler extends TextCommandHandler {
      * @param e event in question
      */
     public void onCommand(String[] args, MessageReceivedEvent e) {
-
+        e.getChannel().sendMessage("Pong!").queue();
     }
 }
