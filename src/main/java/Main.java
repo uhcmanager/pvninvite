@@ -20,7 +20,7 @@ public class Main extends ListenerAdapter {
         }
     }
 
-    private static String getToken(InputStream iS) {
+    public static String getToken(InputStream iS) {
         Scanner scan = new Scanner(iS);
         String line = scan.nextLine();
         line = line.substring(line.indexOf(':') + 1);
@@ -34,8 +34,10 @@ public class Main extends ListenerAdapter {
         String content = message.getContentRaw();
         if (content.startsWith(";")) {
             content = content.substring(1);
-            String command = content.substring(0, content.indexOf(" "));
-            content = content.substring(content.indexOf(" ")).trim();
+            int index = content.indexOf(" ");
+            if (index == -1) index = content.length();
+            String command = content.substring(0, index);
+            content = content.substring(index).trim();
             String[] args = content.split("\\s+");
             TextCommandDelegator.delegate(command, args, e);
         }
