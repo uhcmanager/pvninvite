@@ -2,3 +2,4 @@
 src/main/resources/secret.txt
 src/test/
 target/
+data/

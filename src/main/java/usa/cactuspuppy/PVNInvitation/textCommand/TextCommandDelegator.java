@@ -1,8 +1,10 @@
-package textCommand;
+package usa.cactuspuppy.PVNInvitation.textCommand;
 
 import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import textCommand.handler.PingCommandHandler;
+import usa.cactuspuppy.PVNInvitation.textCommand.handler.BindCommandHandler;
+import usa.cactuspuppy.PVNInvitation.textCommand.handler.HelpCommandHandler;
+import usa.cactuspuppy.PVNInvitation.textCommand.handler.PingCommandHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +13,8 @@ public class TextCommandDelegator {
     private static Map<String, TextCommandHandler> commandHandlerMap = new HashMap<String, TextCommandHandler>();
     static {
         commandHandlerMap.put("ping", new PingCommandHandler());
+        commandHandlerMap.put("help", new HelpCommandHandler());
+        commandHandlerMap.put("bind", new BindCommandHandler());
     }
 
     public static void delegate(String command, String[] args, MessageReceivedEvent e) {
